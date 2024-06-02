@@ -1,0 +1,22 @@
+.section-title {
+    margin-bottom: 48px;
+    max-width: 792px;
+
+    &__title {
+        color: $color-white;
+        font-size: 56px;
+        line-height: 64px;
+        font-weight: 700;
+        color: $color-white;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+    }
+
+    &__description {
+        color: $color-grey;
+        font-size: 18px;
+        line-height: 28px;
+        font-weight: 400;
+        font-family: $secondary-font;
+    }
+}

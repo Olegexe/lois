@@ -1,2 +1,2 @@
-mixin image(filename)
-  img.src(src=require(`/src/assets/img/${filename}`) alt=name)
+mixin image(filename, classes = '')
+  img(src=require(`/src/assets/img/${filename}`) class=classes alt=name)

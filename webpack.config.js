@@ -42,7 +42,7 @@ module.exports = {
   output: {
     filename: '[name].[contenthash].js',
     assetModuleFilename: "assets/[hash][ext][query]",
-    clean: true
+    clean: process.env.NODE_ENV === 'production'
   },
   optimization: {
     splitChunks: {
@@ -106,6 +106,13 @@ module.exports = {
         type: 'asset/resource',
         generator: {
           filename: 'assets/img/[name][ext][query]'
+        }
+      },
+      {
+        test: /\.(mp4|webm)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/video/[name][ext][query]'
         }
       },
       {

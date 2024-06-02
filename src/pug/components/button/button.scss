@@ -1,0 +1,39 @@
+.button {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    padding: 18px 23px;
+    text-transform: uppercase;
+    border-radius: 32px;
+    background-color: $color-blue;
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+    color: $color-white;
+
+    &:hover {
+        background-color: $color-blue-hover;
+    }
+
+    &:active {
+        background-color: $color-blue-active;
+    }
+
+    &:disabled {
+        background-color: #0A0E15;
+        color: #293140;
+    }
+
+    &_bordered {
+        background-color: transparent;
+        border: solid 1px $color-white;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, .05);
+        }
+
+        &:active {
+            background-color: #ADADAD;
+        }
+    }
+}
