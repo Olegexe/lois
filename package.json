@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "set NODE_ENV=development&&webpack serve --open",
     "dev": "set NODE_ENV=development&&webpack",
@@ -39,6 +41,7 @@
   "dependencies": {
     "jquery": "^3.6.0",
     "pug": "^3.0.2",
-    "pug-loader": "^1.0.2"
+    "pug-loader": "^1.0.2",
+    "smooth-scroll": "^16.1.3"
   }
 }

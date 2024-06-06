@@ -18,19 +18,19 @@ html(lang='en')
             nav.header__nav
               ul.header__nav-list
                 li.header__nav-item
-                  a.header__nav-link="Главная"
+                  a.header__nav-link(data-scroll href="#welcome")="Главная"
                 li.header__nav-item
-                  a.header__nav-link="Портфолио"
+                  a.header__nav-link(data-scroll href="#gallery")="Портфолио"
                 li.header__nav-item
-                  a.header__nav-link="Команда"
+                  a.header__nav-link(data-scroll href="#team")="Команда"
                 li.header__nav-item
-                  a.header__nav-link="Услуги"
-      section.welcome
+                  a.header__nav-link(data-scroll href="#contact")="Услуги"
+      section.welcome#welcome
         .welcome__content
           .container
             .welcome__text
-              h1.welcome__title="Продавайте с помощью видео"
-              p.welcome__description="Мы производим видеоконтент, который поможет решить любые задачи вашего бизнеса или проекта: увеличит конверсию, расширит клиентскую базу, повысит узнаваемость бренда, расскажет о новой услуге или акции."
+              h1.welcome__title.h900="Продавайте с помощью видео"
+              p.welcome__description.p400="Мы производим видеоконтент, который поможет решить любые задачи вашего бизнеса или проекта: увеличит конверсию, расширит клиентскую базу, повысит узнаваемость бренда, расскажет о новой услуге или акции."
             .welcome__buttons
               +button("Рассчитать стоимость", "#interview")
               +button("Портфолио", '#gallery', 'bordered')
@@ -99,9 +99,10 @@ html(lang='en')
                       +image('mria.svg')
         .welcome__video
           video(autoplay muted loop preload="auto" class="welcome__video")
-            source(type="video/web" src=require(`/src/assets/video/forest.webm`))
-            source(type="video/mp4" src=require(`/src/assets/video/forest.mp4`))
-      section.gallery
+            source(type="video/web" src=require(`/src/assets/video/lois-background-video.webm`))
+            source(type="video/mp4" src=require(`/src/assets/video/lois-background-video.mp4`))
+          .welcome__video-overlay
+      section.gallery#gallery
         .container
           +section-title("Мы снимаем", "Яркие и запоминающиеся имиджевые ролики, креативные рекламные ролики, иммерсивные тревел видео, включая экстремальную съемку, а так же презентации и конференции.")
           .gallery__item-list
@@ -117,127 +118,84 @@ html(lang='en')
             +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
             +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
             +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
-      section.interview
+      section.interview#interview
         .container
           +section-title("Сколько стоит?", "Пройдите опрос, результат которого даст нам возможность лучше понять ваш проект и поможет рассчитать его примерную стоимость, прежде чем мы свяжемся с вами.")
-          .interview__wrapper
-            .interview__progress-bar
-              ul.interview__progress-item-list
-                li.interview__progress-item.interview__progress-item_active
-                li.interview__progress-item
-                li.interview__progress-item
-                li.interview__progress-item
-                li.interview__progress-item
-                li.interview__progress-item
-                li.interview__progress-item
-                li.interview__progress-item
-              .interview__progress-text
-                span#interview-current-question="1 "
-                | Из
-                span#interview-total-questions=" 8"
-            .interview__content
-              h3.interview__question="Какая тематика съемки вам подходит?"
-              ul.interview__question-list
-                li.interview__question-item
-                  .interview__question-icon
-                    span.icon-clapperboard
-                  p.interview__question-text
-                    |Презентационный
-                    br
-                    |ролик
-                li.interview__question-item
-                  .interview__question-icon
-                    span.icon-video-on
-                  .interview__question-text
-                    |Рекламный ролик 
-                    br
-                    |(промо)
-                li.interview__question-item
-                  .interview__question-icon
-                    span.icon-voice-and-video
-                  .interview__question-text
-                    |Освещение 
-                    br
-                    |мероприятия
-                li.interview__question-item
-                  .interview__question-icon
-                    span.icon-video-roll
-                  .interview__question-text
-                    |Корпоративный
-                    br
-                    |ролик
-                li.interview__question-item
-                  .interview__question-icon
-                    span.icon-video-trim
-                  .interview__question-text
-                    |Обучающее
-                    br
-                    |видео
-              button.button.interview__button="Продолжить"
-      section.team
+          #interview-root
+      section.team#team
         .container
           +section-title("Команда", "Наши талантливые режиссеры, операторы, монтажеры и дизайнеры работают совместно, чтобы достичь высокого качества в каждом проекте. ")
           .team__wrapper
             ul.team__card-list
               li.team__card
-                +image('team1.jpg', 'team__card-image')
-                .team__text
-                  p.team__card-position="Продюсер"
-                  h4.team__card-name="Роберт Санасарян"
+                .team__card-content
+                  +image('team1.jpg', 'team__card-image')
+                  .team__text
+                    p.team__card-position.p100="Продюсер"
+                    h4.team__card-name.h200="Роберт Санасарян"
               li.team__card
-                +image('team1.jpg', 'team__card-image')
-                .team__text
-                  p.team__card-position="Продюсер"
-                  h4.team__card-name="Роберт Санасарян"
+                .team__card-content
+                  +image('team1.jpg', 'team__card-image')
+                  .team__text
+                    p.team__card-position.p100="Продюсер"
+                    h4.team__card-name.h200="Роберт Санасарян"
               li.team__card
-                +image('team1.jpg', 'team__card-image')
-                .team__text
-                  p.team__card-position="Продюсер"
-                  h4.team__card-name="Роберт Санасарян"
+                .team__card-content
+                  +image('team1.jpg', 'team__card-image')
+                  .team__text
+                    p.team__card-position.p100="Продюсер"
+                    h4.team__card-name.h200="Роберт Санасарян"
               li.team__card
-                +image('team1.jpg', 'team__card-image')
-                .team__text
-                  p.team__card-position="Продюсер"
-                  h4.team__card-name="Роберт Санасарян"
+                .team__card-content
+                  +image('team1.jpg', 'team__card-image')
+                  .team__text
+                    p.team__card-position.p100="Продюсер"
+                    h4.team__card-name.h200="Роберт Санасарян"
               li.team__card
-                +image('team1.jpg', 'team__card-image')
-                .team__text
-                  p.team__card-position="Продюсер"
-                  h4.team__card-name="Роберт Санасарян"
+                .team__card-content
+                  +image('team1.jpg', 'team__card-image')
+                  .team__text
+                    p.team__card-position.p100="Продюсер"
+                    h4.team__card-name.h200="Роберт Санасарян"
               li.team__card
-                +image('team1.jpg', 'team__card-image')
-                .team__text
-                  p.team__card-position="Продюсер"
-                  h4.team__card-name="Роберт Санасарян"
+                .team__card-content
+                  +image('team1.jpg', 'team__card-image')
+                  .team__text
+                    p.team__card-position.p100="Продюсер"
+                    h4.team__card-name.h200="Роберт Санасарян"
               li.team__card
-                +image('team1.jpg', 'team__card-image')
-                .team__text
-                  p.team__card-position="Продюсер"
-                  h4.team__card-name="Роберт Санасарян"
+                .team__card-content
+                  +image('team1.jpg', 'team__card-image')
+                  .team__text
+                    p.team__card-position.p100="Продюсер"
+                    h4.team__card-name.h200="Роберт Санасарян"
               li.team__card
-                +image('team1.jpg', 'team__card-image')
-                .team__text
-                  p.team__card-position="Продюсер"
-                  h4.team__card-name="Роберт Санасарян"
+                .team__card-content
+                  +image('team1.jpg', 'team__card-image')
+                  .team__text
+                    p.team__card-position.p100="Продюсер"
+                    h4.team__card-name.h200="Роберт Санасарян"
               li.team__card
-                +image('team1.jpg', 'team__card-image')
-                .team__text
-                  p.team__card-position="Продюсер"
-                  h4.team__card-name="Роберт Санасарян"
+                .team__card-content
+                  +image('team1.jpg', 'team__card-image')
+                  .team__text
+                    p.team__card-position.p100="Продюсер"
+                    h4.team__card-name.h200="Роберт Санасарян"
               li.team__form
-                h3.team__form-title
-                  |Мы находимся в Крыму и
-                  br
-                  |принимаем заказы по всей России.
-                ul.team__form-item-list
-                  li.team__form-item
-                    h4.team__form-item-title="Title"
-                    p.team__form-item-subtitle="Subtitle"
-                  li.team__form-item
-                    h4.team__form-item-title="Title"
-                    p.team__form-item-subtitle="Subtitle"
+                .team__form-content
+                  h3.team__form-title.h550
+                    |Мы находимся в Крыму и
+                    br
+                    |принимаем заказы по всей России.
+                  ul.team__form-item-list
+                    li.team__form-item
+                      h4.team__form-item-title.h300="Title"
+                      p.team__form-item-subtitle.p300="Subtitle"
+                    li.team__form-item
+                      h4.team__form-item-title.h300="Title"
+                      p.team__form-item-subtitle.p300="Subtitle"
               
-      section.contact
+      section.contact#contact
         .container
           +section-title("Как связаться с нами?", "Наши талантливые режиссеры, операторы, монтажеры и дизайнеры работают совместно, чтобы достичь высокого качества в каждом проекте. ")
           ul.contact__social-list
@@ -251,8 +209,8 @@ html(lang='en')
                   </g>
                 </svg>
               .contact__social-text
-                h4.contact__social-name="Telegram"
-                span.contact__social-link="@loisproduction"
+                h4.contact__social-name.h300="Telegram"
+                span.contact__social-link.p300="@loisproduction"
               .contact__social-arrow
                 +image('arrow-right.svg')
             li.contact__social-item.contact__social-item_vk
@@ -263,8 +221,8 @@ html(lang='en')
                   </g>
                 </svg>
               .contact__social-text
-                h4.contact__social-name="VKontakte"
-                span.contact__social-link="@lois.production"
+                h4.contact__social-name.h300="VKontakte"
+                span.contact__social-link.p300="@lois.production"
               .contact__social-arrow
                 +image('arrow-right.svg')
             li.contact__social-item.contact__social-item_insta
@@ -273,8 +231,8 @@ html(lang='en')
                   <path d="M32.0007 13.9985C27.1119 13.9985 26.4983 14.0199 24.5782 14.1073C22.6618 14.195 21.3538 14.4984 20.2092 14.9436C19.0252 15.4034 18.0209 16.0184 17.0204 17.0194C16.019 18.0199 15.404 19.0242 14.9427 20.2078C14.4965 21.3527 14.1927 22.6612 14.1064 24.5768C14.0205 26.497 13.998 27.1109 13.998 31.9997C13.998 36.8885 14.0198 37.5001 14.1068 39.4203C14.1949 41.3366 14.4983 42.6447 14.9431 43.7893C15.4033 44.9732 16.0183 45.9776 17.0192 46.9781C18.0194 47.9794 19.0237 48.596 20.2069 49.0558C21.3523 49.5009 22.6607 49.8043 24.5767 49.8921C26.4968 49.9794 27.11 50.0008 31.9984 50.0008C36.8876 50.0008 37.4993 49.9794 39.4194 49.8921C41.3358 49.8043 42.6454 49.5009 43.7907 49.0558C44.9743 48.596 45.9771 47.9794 46.9773 46.9781C47.9786 45.9776 48.5936 44.9732 49.0549 43.7897C49.4974 42.6447 49.8012 41.3363 49.8912 39.4206C49.9774 37.5005 50 36.8885 50 31.9997C50 27.1109 49.9774 26.4973 49.8912 24.5772C49.8012 22.6608 49.4974 21.3527 49.0549 20.2082C48.5936 19.0242 47.9786 18.0199 46.9773 17.0194C45.9759 16.018 44.9746 15.403 43.7896 14.9436C42.642 14.4984 41.3332 14.195 39.4168 14.1073C37.4967 14.0199 36.8854 13.9985 31.9951 13.9985H32.0007ZM30.3858 17.2425C30.8651 17.2417 31.3999 17.2425 32.0007 17.2425C36.807 17.2425 37.3767 17.2597 39.2746 17.346C41.0298 17.4263 41.9823 17.7195 42.6169 17.9659C43.4569 18.2922 44.0558 18.6822 44.6855 19.3122C45.3155 19.9423 45.7056 20.5423 46.0326 21.3824C46.279 22.0162 46.5726 22.9687 46.6525 24.7238C46.7387 26.6215 46.7575 27.1915 46.7575 31.9955C46.7575 36.7996 46.7387 37.3696 46.6525 39.2673C46.5722 41.0224 46.279 41.9749 46.0326 42.6087C45.7063 43.4488 45.3155 44.0469 44.6855 44.6766C44.0554 45.3066 43.4573 45.6967 42.6169 46.0229C41.9831 46.2705 41.0298 46.563 39.2746 46.6432C37.377 46.7295 36.807 46.7482 32.0007 46.7482C27.194 46.7482 26.6243 46.7295 24.7267 46.6432C22.9716 46.5622 22.0191 46.269 21.3841 46.0226C20.5441 45.6963 19.944 45.3063 19.314 44.6762C18.684 44.0462 18.2939 43.4476 17.9669 42.6072C17.7205 41.9734 17.4269 41.0209 17.347 39.2658C17.2608 37.3681 17.2435 36.7981 17.2435 31.991C17.2435 27.184 17.2608 26.617 17.347 24.7193C17.4273 22.9642 17.7205 22.0117 17.9669 21.3771C18.2932 20.5371 18.684 19.937 19.314 19.307C19.944 18.677 20.5441 18.2869 21.3841 17.9599C22.0187 17.7124 22.9716 17.4199 24.7267 17.3392C26.3873 17.2642 27.0309 17.2417 30.3858 17.238V17.2425ZM41.6095 20.2314C40.417 20.2314 39.4494 21.1979 39.4494 22.3908C39.4494 23.5834 40.417 24.551 41.6095 24.551C42.8021 24.551 43.7697 23.5834 43.7697 22.3908C43.7697 21.1982 42.8021 20.2307 41.6095 20.2307V20.2314ZM32.0007 22.7553C26.8955 22.7553 22.7564 26.8945 22.7564 31.9997C22.7564 37.1049 26.8955 41.2421 32.0007 41.2421C37.1059 41.2421 41.2435 37.1049 41.2435 31.9997C41.2435 26.8945 37.1059 22.7553 32.0007 22.7553ZM32.0007 25.9993C35.3144 25.9993 38.0011 28.6856 38.0011 31.9997C38.0011 35.3134 35.3144 38.0001 32.0007 38.0001C28.6866 38.0001 26.0003 35.3134 26.0003 31.9997C26.0003 28.6856 28.6866 25.9993 32.0007 25.9993Z" fill="currentColor"/>
               </svg>
               .contact__social-text
-                h4.contact__social-name="Instagram"
-                span.contact__social-link="@lois.production"
+                h4.contact__social-name.h300="Instagram"
+                span.contact__social-link.p300="@lois.production"
               .contact__social-arrow
                 +image('arrow-right.svg')
             li.contact__social-item.contact__social-item_youtube
@@ -285,22 +243,22 @@ html(lang='en')
                     </g>
                 </svg>
               .contact__social-text
-                h4.contact__social-name="YouTube"
-                span.contact__social-link="@lois.production"
+                h4.contact__social-name.h300="YouTube"
+                span.contact__social-link.p300="@lois.production"
               .contact__social-arrow
                 +image('arrow-right.svg')
           .contact__form-wrapper
             +image('contact.jpg', 'contact__form-bg')
             .contact__form-content
               .contact__form-text
-                h3.contact__text-title="Почти готово, теперь заполните форму обратной связи."
-                .contact__text-description="Введите имя и номер телефона, чтобы мы могли с вами связаться после того как сделаем предварительную оценку Вашего проекта."
+                h3.contact__text-title.h750="Почти готово, теперь заполните форму обратной связи."
+                .contact__text-description.p300="Введите имя и номер телефона, чтобы мы могли с вами связаться после того как сделаем предварительную оценку Вашего проекта."
               .contact__form-wrap
                 form.contact__form
                   input.contact__input(type="text" placeholder="Ваше имя")
                   input.contact__input(type="phone" placeholder="Ваш номер телефона")
                   input(class="button" type="submit" value="Отправить")
-                p.contact__form-privacy-policy="Нажимая на кнопку «Отправить», вы подтверждаете свое согласие на обработку персональных данных и соглашаетесь с "
+                p.contact__form-privacy-policy.c200="Нажимая на кнопку «Отправить», вы подтверждаете свое согласие на обработку персональных данных и соглашаетесь с "
                   a(href="#")="политикой конфиденциальности"
       footer.footer
         .container
