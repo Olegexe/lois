@@ -1,2 +1,8 @@
 mixin image(filename, classes = '')
   img(src=require(`/src/assets/img/${filename}`) class=classes alt=name)
+
+mixin image2(path, name, type, classes = '')
+  picture
+    each val in type
+      source(srcset=path + "/" + name + "." + val type="image/" + val)
+    img(src=path + "/" + name + ".jpg" alt=name class=classes)
