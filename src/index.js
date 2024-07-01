@@ -1,6 +1,8 @@
 import SmoothScroll from "smooth-scroll";
 import "./assets/scss/index.scss";
 import Quiz from './quiz'
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel';
 
 let smoothScroll = new SmoothScroll('a[href*="#"]', {
     speed: 500,
@@ -92,3 +94,10 @@ let questions = [
 ]
 
 let quiz = new Quiz(questions);
+
+$(document).ready(function(){
+    $('.owl-carousel').owlCarousel({
+        margin: 16,
+        items: 4
+    });
+  });

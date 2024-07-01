@@ -105,96 +105,48 @@ html(lang='en')
       section.gallery#gallery
         .container
           +section-title("Мы снимаем", "Яркие и запоминающиеся имиджевые ролики, креативные рекламные ролики, иммерсивные тревел видео, включая экстремальную съемку, а так же презентации и конференции.")
-          .gallery__item-list
+          ul.gallery__item-list
+            +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "", true)
             +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
             +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
             +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
             +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
             +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
             +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
-            +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
-            +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
-            +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
-            +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
-            +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
-            +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
+            //- +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
+            //- +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
+            //- +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
+            //- +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
+            //- +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
+            //- +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
+            //- +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
+            //- +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
+            //- +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
+            //- +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
+            //- +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
+            //- +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "")
       section.interview#interview
         .container
           +section-title("Сколько стоит?", "Пройдите опрос, результат которого даст нам возможность лучше понять ваш проект и поможет рассчитать его примерную стоимость, прежде чем мы свяжемся с вами.")
           #interview-root
-      section.team#team
+      section.vertical
+        .vertical__overlay
         .container
-          +section-title("Команда", "Наши талантливые режиссеры, операторы, монтажеры и дизайнеры работают совместно, чтобы достичь высокого качества в каждом проекте. ")
-          .team__wrapper
-            ul.team__card-list
-              li.team__card
-                .team__card-content
-                  +image('team1.jpg', 'team__card-image')
-                  .team__text
-                    p.team__card-position.p100="Продюсер"
-                    h4.team__card-name.h200="Роберт Санасарян"
-              li.team__card
-                .team__card-content
-                  +image('team1.jpg', 'team__card-image')
-                  .team__text
-                    p.team__card-position.p100="Продюсер"
-                    h4.team__card-name.h200="Роберт Санасарян"
-              li.team__card
-                .team__card-content
-                  +image('team1.jpg', 'team__card-image')
-                  .team__text
-                    p.team__card-position.p100="Продюсер"
-                    h4.team__card-name.h200="Роберт Санасарян"
-              li.team__card
-                .team__card-content
-                  +image('team1.jpg', 'team__card-image')
-                  .team__text
-                    p.team__card-position.p100="Продюсер"
-                    h4.team__card-name.h200="Роберт Санасарян"
-              li.team__card
-                .team__card-content
-                  +image('team1.jpg', 'team__card-image')
-                  .team__text
-                    p.team__card-position.p100="Продюсер"
-                    h4.team__card-name.h200="Роберт Санасарян"
-              li.team__card
-                .team__card-content
-                  +image('team1.jpg', 'team__card-image')
-                  .team__text
-                    p.team__card-position.p100="Продюсер"
-                    h4.team__card-name.h200="Роберт Санасарян"
-              li.team__card
-                .team__card-content
-                  +image('team1.jpg', 'team__card-image')
-                  .team__text
-                    p.team__card-position.p100="Продюсер"
-                    h4.team__card-name.h200="Роберт Санасарян"
-              li.team__card
-                .team__card-content
-                  +image('team1.jpg', 'team__card-image')
-                  .team__text
-                    p.team__card-position.p100="Продюсер"
-                    h4.team__card-name.h200="Роберт Санасарян"
-              li.team__card
-                .team__card-content
-                  +image('team1.jpg', 'team__card-image')
-                  .team__text
-                    p.team__card-position.p100="Продюсер"
-                    h4.team__card-name.h200="Роберт Санасарян"
-              li.team__form
-                .team__form-content
-                  h3.team__form-title.h550
-                    |Мы находимся в Крыму и
-                    br
-                    |принимаем заказы по всей России.
-                  ul.team__form-item-list
-                    li.team__form-item
-                      h4.team__form-item-title.h300="Title"
-                      p.team__form-item-subtitle.p300="Subtitle"
-                    li.team__form-item
-                      h4.team__form-item-title.h300="Title"
-                      p.team__form-item-subtitle.p300="Subtitle"
-              
+          +section-title("Вертикальный контент", "Мы создаем динамичный контент для социальных сетей, который способен увлечь вашу аудиторию и продвигать ваш профиль.")
+          .vertical__slider
+            ul.vertical__slider-list.owl-carousel.owl-theme
+              li.vertical__slider-item
+                +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "", false, true)
+              li.vertical__slider-item
+                +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "", false, true)
+              li.vertical__slider-item
+                +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "", false, true)
+              li.vertical__slider-item
+                +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "", false, true)
+              li.vertical__slider-item
+                +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "", false, true)
+              li.vertical__slider-item
+                +gallery-item("ADIDAS - Move Faster", "Рекламный ролик", "", false, true)
       section.contact#contact
         .container
           +section-title("Как связаться с нами?", "Наши талантливые режиссеры, операторы, монтажеры и дизайнеры работают совместно, чтобы достичь высокого качества в каждом проекте. ")

@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 const fs = require("fs");
 const PugPlugin = require('pug-plugin');
+const webpack = require('webpack');
 
 let mode = 'development';
 if(process.env.NODE_ENV === 'production') {
@@ -66,6 +67,11 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: `[name].[contenthash].css`
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery'
     }),
     // ...PAGES.map(page => new HtmlWebpackPlugin({
     //   template: `${PAGES_DIR}/${page}`,

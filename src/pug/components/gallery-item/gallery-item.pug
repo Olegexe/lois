@@ -1,12 +1,34 @@
 include ../../libs/_libs
 
-mixin gallery-item(title, description, link)
-    .gallery-item
-        +image('gallery1.png', 'gallery-item__preview')
-        .gallery-item__content
-            a.gallery-item__text
-                p.gallery-item__description.p100=description
-                h3.gallery-item__title.h200=title
-            a.gallery-item__playbtn
-                span.icon-play
+mixin gallery-item(title, description, link, isFirst = false, vertical = false)
+    if vertical == true 
+        a.gallery-item__link(href="#")
+            +image('video-cover.jpg', 'gallery-item__preview')
+            span.gallery-item__content
+                span.gallery-item__text
+                    p.gallery-item__description.p100=description
+                    h3.gallery-item__title.h200=title
+                span.gallery-item__playbtn
+                    span.icon-play
+    else
+        if isFirst == true
+            li.gallery-item
+                a.gallery-item__link(href="#")
+                    +image('video-cover (1).jpg', 'gallery-item__preview')
+                    span.gallery-item__content
+                        span.gallery-item__text
+                            p.gallery-item__description.p200=description
+                            h3.gallery-item__title.h300=title
+                        span.gallery-item__playbtn
+                            span.icon-play
+        else
+            li.gallery-item
+                a.gallery-item__link(href="#")
+                    +image('video-cover (1).jpg', 'gallery-item__preview')
+                    span.gallery-item__content
+                        span.gallery-item__text
+                            p.gallery-item__description.p100=description
+                            h3.gallery-item__title.h200=title
+                        span.gallery-item__playbtn
+                            span.icon-play
                 
