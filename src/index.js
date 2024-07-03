@@ -3,6 +3,9 @@ import "./assets/scss/index.scss";
 import Quiz from './quiz'
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel';
+import Plyr from 'plyr';
+
+let player = new Plyr('#player', {});
 
 let smoothScroll = new SmoothScroll('a[href*="#"]', {
     speed: 500,
@@ -98,6 +101,31 @@ let quiz = new Quiz(questions);
 $(document).ready(function(){
     $('.owl-carousel').owlCarousel({
         margin: 16,
-        items: 4
+        items: 4,
+        nav: true
     });
   });
+
+$('#modal').on('click', function(e) {
+    if(e.currentTarget !== e.target) return;
+    $('#modal').css({'display': 'none'});
+    player.pause()
+})
+
+$('.gallery-item__link').on('click', function(e) {
+    console.log(e.currentTarget)
+    loadVideo(e.currentTarget.dataset.url)
+})
+
+function loadVideo(id) {
+    player.source = {
+        type: 'video',
+        sources: [
+          {
+            src: id,
+            provider: 'youtube',
+          },
+        ],
+      };
+    $('#modal').css({"display": "flex"});
+}
