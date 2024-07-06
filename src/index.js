@@ -1,3 +1,4 @@
+
 import SmoothScroll from "smooth-scroll";
 import "./assets/scss/index.scss";
 import Quiz from './quiz'
@@ -5,7 +6,17 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel';
 import Plyr from 'plyr';
 
-let player = new Plyr('#player', {});
+const YT_API_KEY = 'AIzaSyAM5UyIhNoLeW5hDNY5qtIN6DYQX4xXMOQ';
+const YT_VIDEO_URL = `https://www.googleapis.com/youtube/v3/videos?id=%KGDfR88_K_8%&part=snippet&${YT_API_KEY}`;
+
+fetch(YT_VIDEO_URL).then(response => response.json())
+.then(data => {console.log(data)})
+
+// let player = new Plyr('#player', {
+//     quality: {
+//         default: 1080, options: [4320, 2880, 2160, 1440, 1080, 720, 576, 480, 360, 240]
+//     }
+// });
 
 let smoothScroll = new SmoothScroll('a[href*="#"]', {
     speed: 500,
@@ -15,6 +26,7 @@ let smoothScroll = new SmoothScroll('a[href*="#"]', {
 let questions = [
     {
         question: "Какая тематика съемки вам подходит?",
+        multiply: false,
         answers: [
             "Презентационный<br>ролик",
             "Рекламный ролик<br>(промо)",
@@ -25,6 +37,7 @@ let questions = [
     },
     {
         question: "Какую цель преследует ваше видео?",
+        multiply: false,
         answers: [
             "Доходчиво рассказать о продукте или услуге целевой аудитории",
             "Сформировать доверие,  партнеров и потенциальных клиентов",
@@ -34,6 +47,7 @@ let questions = [
     },
     {
         question: "Какой длительности должно быть видео?",
+        multiply: false,
         answers: [
             "От 10 до 30 секунд",
             "От 30 до 60 секунд",
@@ -45,6 +59,7 @@ let questions = [
     },
     {
         question: "Вам потребуется написание сценария или текста?",
+        multiply: false,
         answers: [
             "Да, мне нужна помощь",
             "Видел классную идею, хочу повторить",
@@ -54,6 +69,7 @@ let questions = [
     },
     {
         question: "Когда полностью должно быть готово видео?",
+        multiply: false,
         answers: [
             "Сроки горят, есть меньше недели",
             "Неделя, две — меня устроит",
@@ -63,6 +79,7 @@ let questions = [
     },
     {
         question: "Какая целевая аудитория вас интересует?",
+        multiply: false,
         answers: [
             "Молодёжь, нужно хайпануть",
             "Мамочки и их детишки",
@@ -74,6 +91,7 @@ let questions = [
     },
     {
         question: "Какой примерный бюджет вашего видео?",
+        multiply: false,
         answers: [
             "От 300 тысяч до 600 тысяч",
             "От 600 тысяч до 1 миллиона",
@@ -85,6 +103,7 @@ let questions = [
     },
     {
         question: "Какой показатель для вас наиболее важен?",
+        multiply: true,
         answers: [
             "Цена",
             "Сроки",
@@ -98,34 +117,37 @@ let questions = [
 
 let quiz = new Quiz(questions);
 
-$(document).ready(function(){
-    $('.owl-carousel').owlCarousel({
-        margin: 16,
-        items: 4,
-        nav: true
-    });
-  });
+jQuery(document).ready(function() {
+    updateSlider()
+    jQuery(window).resize(updateSlider)
+});
 
-$('#modal').on('click', function(e) {
+jQuery('#modal').on('click', function(e) {
     if(e.currentTarget !== e.target) return;
-    $('#modal').css({'display': 'none'});
-    player.pause()
+    jQuery('#modal').css({'display': 'none'});
+    jQuery('body').removeClass('lock');
+    jQuery('#modal__content').html('')
 })
 
-$('.gallery-item__link').on('click', function(e) {
-    console.log(e.currentTarget)
+jQuery('.gallery-item__link').on('click', function(e) {
+    e.preventDefault()
+    jQuery('body').addClass('lock');
     loadVideo(e.currentTarget.dataset.url)
 })
 
 function loadVideo(id) {
-    player.source = {
-        type: 'video',
-        sources: [
-          {
-            src: id,
-            provider: 'youtube',
-          },
-        ],
-      };
-    $('#modal').css({"display": "flex"});
+    jQuery('#modal__content').html(`<iframe width="1280" height="720" src="https://www.youtube.com/embed/${id}?si=16Srgq25nFLY_387&autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`)
+    jQuery('#modal').css({"display": "flex"});
+}
+
+function updateSlider() {
+    let slides = 4;
+    if(window.screen.width <= 360) slides = 1;
+
+    jQuery('.owl-carousel').owlCarousel({
+        margin: 16,
+        items: slides,
+        nav: true,
+        autoWidth: true,
+    });
 }

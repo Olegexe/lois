@@ -81,3 +81,18 @@
         transition: opacity .5s ease-in-out;
     }
 }
+
+@media screen {
+    .gallery-item {
+
+        &__title.h300 {
+            font-size: 14px;
+            line-height: 20px;
+        }
+
+        &__description.p200 {
+            font-size: 12px;
+            line-height: 16px;
+        }
+    }
+}

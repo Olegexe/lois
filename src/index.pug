@@ -1,10 +1,6 @@
 include pug/libs/_libs
 include pug/components/components.pug
 
-//- 1. Исправить partners
-//- 2. Добавить градиентные оверлей на фото
-//- 3. Подумать как можно заменить br теги
-
 doctype html
 html(lang='en')
   include pug/_head.pug 
@@ -50,12 +46,12 @@ html(lang='en')
               h1.welcome__title.h900="Продавайте с помощью видео"
               p.welcome__description.p400="Мы производим видеоконтент, который поможет решить любые задачи вашего бизнеса или проекта: увеличит конверсию, расширит клиентскую базу, повысит узнаваемость бренда, расскажет о новой услуге или акции."
             .welcome__buttons
-              //- +button("Рассчитать стоимость", "#interview")
               +button("Смотреть портфолио", '#gallery')
+              +button("Связаться с нами", "#", 'bordered')
             .welcome__partners
               ul.welcome__partners-list
                 li.welcome__partners-item
-                  +image('haval.svg')
+                  +image('vk.svg')
                 li.welcome__partners-item
                   +image('meganom.svg')
                 li.welcome__partners-item
@@ -63,7 +59,7 @@ html(lang='en')
                 li.welcome__partners-item
                   +image('sber.svg')
                 li.welcome__partners-item
-                  +image('vk.svg')
+                  +image('haval.svg')
                 li.welcome__partners-item
                   +image('simferopol.svg')
                 li.welcome__partners-item
@@ -186,11 +182,35 @@ html(lang='en')
           .container
             .footer__content
               .footer__top
-                .footer__logo
-                  +image('logo.svg')
-                .footer__phone
-                  span.footer__caption.p100="Телефон для связи"
-                  a.footer__phone-link.h250(href="tel:+79788889944")="+7 (978) 888-99-44"
+                .footer__top-wrap
+                  .footer__logo
+                    +image('logo.svg')
+                  .footer__phone
+                    span.footer__caption.p100="Телефон для связи"
+                    a.footer__phone-link.h250(href="tel:+79788889944")="+7 (978) 888-99-44"
+                nav.footer__nav
+                  ul.footer__nav-list
+                    li.footer__nav-item
+                      a.footer__nav-link(data-scroll href="#welcome")
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M9.84784 14.5451L9.517 19.0122C9.99034 19.0122 10.1953 18.817 10.4412 18.5827L12.6604 16.5467L17.2588 19.7794C18.1022 20.2306 18.6964 19.993 18.9239 19.0346L21.9423 5.45712L21.9431 5.45632C22.2106 4.25952 21.4923 3.79153 20.6706 4.08512L2.9285 10.6059C1.71764 11.0571 1.73598 11.7051 2.72267 11.9987L7.25861 13.3531L17.7947 7.02431C18.2905 6.70911 18.7414 6.88351 18.3705 7.19871L9.84784 14.5451Z" fill="white"/>
+                        </svg>
+                    li.footer__nav-item
+                      a.footer__nav-link(data-scroll href="#gallery")
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M2 5.75854C2.1624 13.8787 6.0599 18.7585 12.8931 18.7585H13.2805V14.1129C15.7914 14.3732 17.6901 16.2861 18.4521 18.7585H22C21.0256 15.0628 18.4646 13.0198 16.8656 12.239C18.4646 11.2761 20.7132 8.93372 21.2503 5.75854H18.0273C17.3277 8.33512 15.2543 10.6775 13.2805 10.8987V5.75854H10.0574V14.7635C8.05865 14.243 5.53529 11.7185 5.42286 5.75854H2Z" fill="white"/>
+                        </svg>
+                    li.footer__nav-item
+                      a.footer__nav-link(data-scroll href="#team")
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 14.7365C13.6446 14.7365 14.9779 13.4031 14.9779 11.7585C14.9779 10.114 13.6446 8.7806 12 8.7806C10.3554 8.7806 9.02206 10.114 9.02206 11.7585C9.02206 13.4031 10.3554 14.7365 12 14.7365Z" fill="white"/>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M6.97059 2.75854H17.0294C19.2189 2.75854 21 4.53962 21 6.72913V16.788C21 18.9775 19.2189 20.7585 17.0294 20.7585H6.97059C4.78108 20.7585 3 18.9775 3 16.788V6.72913C3 4.53962 4.78108 2.75854 6.97059 2.75854ZM7.03676 11.7585C7.03676 14.4953 9.26324 16.7218 12 16.7218C14.7368 16.7218 16.9632 14.4953 16.9632 11.7585C16.9632 9.02179 14.7368 6.79531 12 6.79531C9.26324 6.79531 7.03676 9.02179 7.03676 11.7585ZM16.6985 6.06737C16.6985 6.61565 17.1429 7.06002 17.6912 7.06002C18.2395 7.06002 18.6838 6.61565 18.6838 6.06737C18.6838 5.51909 18.2395 5.07472 17.6912 5.07472C17.1429 5.07472 16.6985 5.51909 16.6985 6.06737Z" fill="white"/>
+                        </svg>
+                    li.footer__nav-item
+                      a.footer__nav-link(data-scroll href="#contact")
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M22.1425 6.28764C21.3484 5.37306 19.8822 5 17.0821 5H6.91772C4.05353 5 2.5625 5.39713 1.77135 6.37084C1 7.32021 1 8.71903 1 10.655V14.345C1 18.0957 1.9152 20 6.91772 20H17.0821C19.5104 20 20.8559 19.6708 21.7264 18.8637C22.6191 18.036 23 16.6846 23 14.345V10.655C23 8.61335 22.9403 7.20628 22.1425 6.28764ZM15.1241 13.0095L10.5085 15.3465C10.4053 15.3988 10.2924 15.4247 10.1797 15.4247C10.0521 15.4247 9.92483 15.3914 9.81206 15.3253C9.59973 15.2006 9.47007 14.9777 9.47007 14.7371V10.078C9.47007 9.83794 9.59937 9.61518 9.81128 9.49046C10.0233 9.36573 10.2869 9.35721 10.5068 9.46791L15.1224 11.7899C15.3573 11.908 15.5047 12.1429 15.5051 12.3991C15.5054 12.6556 15.3585 12.8908 15.1241 13.0095Z" fill="white"/>
+                        </svg>
               .footer__bottom
                 a.footer__privacy-policy.c200(href="#")="Политика конфиденциальности"
                 p.footer__copyrates.c200="© 2024 Видеопродакшн студия Москва"

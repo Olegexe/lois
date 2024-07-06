@@ -1,6 +1,8 @@
 .section-title {
     margin-bottom: 64px;
     max-width: 792px;
+    position: relative;
+    z-index: 99;
 
     &__title {
         color: $color-white;

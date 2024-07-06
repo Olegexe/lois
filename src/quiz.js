@@ -1,3 +1,5 @@
+import { isArray } from "jquery";
+
 class Quiz {
     constructor(questions) {
         this.currentQuestion = 0;
@@ -19,12 +21,16 @@ class Quiz {
         this.questionListElements = document.getElementsByClassName('interview__question') || undefined;
         this.quizControlsElement = document.getElementsByClassName('interview__controls')[0] || undefined;
         this.quizProgressElements = document.getElementsByClassName('interview__progress-item') || undefined;
-        this.quizAnswerElements = document.getElementsByClassName('interview__answer-radio') || undefined;
+        this.quizRadioElements = document.getElementsByClassName('interview__answer-radio') || undefined;
+        this.quizCheckboxElements = document.getElementsByClassName('interview__answer-checkbox') || undefined;
 
         this.nextButtonElement.addEventListener('click', this.nextQuestion.bind(this))
         this.prevButtonElement.addEventListener('click', this.prevQuestion.bind(this))
-        for(let i = 0; i < this.quizAnswerElements.length; i++) 
-            this.quizAnswerElements[i].addEventListener('change', this.answerRadioHandler.bind(this))
+        for(let i = 0; i < this.quizRadioElements.length; i++) 
+            this.quizRadioElements[i].addEventListener('change', this.answerClickHandler.bind(this))
+
+        for(let i = 0; i < this.quizCheckboxElements.length; i++) 
+            this.quizCheckboxElements[i].addEventListener('change', this.answerClickHandler.bind(this))
 
         this.nextQuestion = this.nextQuestion.bind(this)
         
@@ -35,7 +41,7 @@ class Quiz {
 
     nextQuestion() {
         if(this.currentQuestion == this.totalQuestions - 1) {
-            this.generateAnswers();
+            console.log(this.getAnswers());
         } else {
             this.currentSliderPos += ((document.getElementsByClassName('interview__question')[0].offsetWidth + 64));
             document.getElementsByClassName('interview__question-list')[0]
@@ -59,6 +65,7 @@ class Quiz {
     }
 
     update() {
+        console.log(this.answers)
         this.currentQuestionElement.innerHTML = this.currentQuestion + 1;
 
         for(let i = 0; i < this.totalQuestions; i++) {
@@ -89,12 +96,35 @@ class Quiz {
                                 <h3 class="interview__question-title h750">${this.questionList[i].question}</h3>
                                 <ul class="interview__answer-list">`
             for(let j = 0; j < this.questionList[i].answers.length; j++) {
-                                        questionDOM += `<li class="interview__answer-item"><input class="interview__answer-radio" type="radio" id="question-${i}-${j}" name="question-${i}" value="${j}"><label class="interview__answer-label" for="question-${i}-${j}">
-                                            <div class="interview__answer-icon">
-                                                <span class="icon-clapperboard"></span>
-                                            </div>
-                                            <p class="interview__answer-text h250">${this.questionList[i].answers[j]}</p>
-                                        </label></li>`
+                if(this.questionList[i].multiply == false) {
+                    if(i == 0) {
+                        questionDOM += `<li class="interview__answer-item"><input class="interview__answer-radio" type="radio" id="question-${i}-${j}" name="question-${i}" value="${j}"><label class="interview__answer-label" for="question-${i}-${j}">
+                                <div class="interview__answer-icon">
+                                    <span class="icon-clapperboard"></span>
+                                </div>
+                                <p class="interview__answer-text h250">${this.questionList[i].answers[j]}</p>
+                            </label></li>`
+                    } else {
+                        questionDOM += `<li class="interview__answer-item"><input class="interview__answer-radio" type="radio" id="question-${i}-${j}" name="question-${i}" value="${j}"><label class="interview__answer-label" for="question-${i}-${j}">
+                                <p class="interview__answer-text p200">${this.questionList[i].answers[j]}</p>
+                            </label></li>`
+                    }
+                    
+                } else {
+                    if(i == 0) {
+                        questionDOM += `<li class="interview__answer-item"><input class="interview__answer-checkbox" type="checkbox" id="question-${i}-${j}" name="question-${i}" value="${j}"><label class="interview__answer-label" for="question-${i}-${j}">
+                                <div class="interview__answer-icon">
+                                    <span class="icon-clapperboard"></span>
+                                </div>
+                                <p class="interview__answer-text h250">${this.questionList[i].answers[j]}</p>
+                            </label></li>`
+                    } else {
+                        questionDOM += `<li class="interview__answer-item"><input class="interview__answer-checkbox" type="checkbox" id="question-${i}-${j}" name="question-${i}" value="${j}"><label class="interview__answer-label" for="question-${i}-${j}">
+                                <p class="interview__answer-text p200">${this.questionList[i].answers[j]}</p>
+                            </label></li>`
+                    }
+                }
+                
             }
             questionDOM += `</ul></li>`
         }
@@ -104,17 +134,39 @@ class Quiz {
         if(this.rootElement) this.rootElement.innerHTML = quizDOM;
     }
 
-    answerRadioHandler(e) {
-        this.answers[this.currentQuestion].answer = this.questionList[this.currentQuestion].answers[e.currentTarget.value];
+    answerClickHandler(e) {
+        if(e.currentTarget.type == "checkbox") {
+            if(Array.isArray(this.answers[this.currentQuestion].answer)) {
+                let indexInArray = this.answers[this.currentQuestion].answer.indexOf(this.questionList[this.currentQuestion].answers[e.currentTarget.value])
+                if(indexInArray != -1) {
+                    this.answers[this.currentQuestion].answer.splice(indexInArray, 1)
+                    if(this.answers[this.currentQuestion].answer.length == 0) this.answers[this.currentQuestion].answer = undefined;
+                } else {
+                this.answers[this.currentQuestion].answer.push(this.questionList[this.currentQuestion].answers[e.currentTarget.value])
+                }
+            } else {
+                this.answers[this.currentQuestion].answer = Array();
+                this.answers[this.currentQuestion].answer.push(this.questionList[this.currentQuestion].answers[e.currentTarget.value])
+            }
+        } else {
+            this.answers[this.currentQuestion].answer = this.questionList[this.currentQuestion].answers[e.currentTarget.value];
+        }
+
         this.update();
     }
 
+    getAnswers() {
+        return this.answers;
+    }
+
+    // delete?
     generateAnswers() {
         let answers = [];
         for(let i = 0; i < this.totalQuestions; i++) {
             let answer = document.querySelector(`input[name="question-${i}"]:checked`);
 
             if(answer) {
+                if(answers)
                 answers.push({question: this.questionList[i].question, answer: this.questionList[i].answers[answer.value].replace(/<[^>]*>/g, '')})
             } else {
                 answers.push({question: this.questionList[i].question, answer: undefined})
