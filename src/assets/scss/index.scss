@@ -1301,13 +1301,13 @@ section {
       max-width: 614px;
     }
 
-    &__form {
-      grid-template-columns: minmax(100px, 1fr) min-content;
-    }
-
     &__form-content {
       column-gap: 48px;
       align-items: start;
+    }
+
+    &__form {
+      grid-template-columns: minmax(100px, 1fr) min-content;
     }
   }
 }
@@ -1419,31 +1419,14 @@ section {
       right: 23px;
     }
 
-    &__form-content {
-      flex-direction: column;
-    }
-
-    &__form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    &__text-description {
-      margin-bottom: 32px;
+    &__form-text {
+      max-width: none;
     }
 
     &__form-content {
-      padding: 24px;
+      column-gap: 48px;
     }
 
-    &__form-wrapper {
-      padding-top: 236px;
-    }
-
-    &__form-bg {
-      top: -205px;
-      height: 563px;
-    }
   }
 
   .vertical {
