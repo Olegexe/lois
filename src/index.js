@@ -142,7 +142,8 @@ function loadVideo(id) {
 
 function updateSlider() {
     let slides = 4;
-    if(window.screen.width <= 360) slides = 1;
+    if(window.screen.width <= 1279) slides = 3;
+    else if(window.screen.width <= 767) slides = 1;
 
     jQuery('.owl-carousel').owlCarousel({
         margin: 16,

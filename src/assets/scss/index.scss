@@ -166,6 +166,7 @@ body {
   max-width: 2560px;
   width: 100%;
   margin: 0 auto;
+  position: relative;
 }
 
 h1 {
@@ -278,7 +279,7 @@ section {
 }
 
 .header {
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   height: 86px;
@@ -306,6 +307,8 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
+    width: 100%;
 
     &:hover {
       background: #FFFFFF33;
@@ -1160,7 +1163,7 @@ section {
   }
 
   &__nav {
-    display: none;
+    
   }
 
   &__nav-link {
@@ -1228,37 +1231,17 @@ section {
   }
 }
 
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 1919px) { // lg
   .container {
     max-width: 1470px;
   }
-
-  .h900 {
-    font-size: 64px;
-    line-height: 72px;
-  }
-
-  .p400 {
-    font-size: 18px;
-    line-height: 28px;
-  }
-
-  .vertical {
-    &__overlay {
-      width: 5%;
-    }
-  }
 }
 
-@media screen and (max-width: 1440px) {
-  .vertical {
-    &__overlay {
-      width: 2%;
-    }
+@media screen and (max-width: 1599px) { // md
+  section {
+    padding: 96px 0;
   }
-}
-
-@media screen and (max-width: 1280px) {
+  
   .container {
     max-width: 1150px;
   }
@@ -1268,6 +1251,11 @@ section {
   }
 
   .h900 {
+    font-size: 64px;
+    line-height: 72px;
+  }
+
+  .h700 {
     font-size: 48px;
     line-height: 56px;
   }
@@ -1277,19 +1265,34 @@ section {
     line-height: 56px;
   }
 
-  .h700 {
-    font-size: 48px;
-    line-height: 56px;
+  .h300 {
+    font-size: 20px;
+    line-height: 28px;
   }
 
   .p400 {
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 18px;
+    line-height: 28px;
   }
 
   .p300 {
     font-size: 16px;
     line-height: 24px;
+  }
+
+  .p200 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .vertical {
+    &__slider-item {
+      height: 467px;
+    }
+
+    &__overlay {
+      width: 5%;
+    }
   }
 
   .contact {
@@ -1304,11 +1307,172 @@ section {
 
     &__form-content {
       column-gap: 48px;
+      align-items: start;
     }
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 1440px) {
+  .vertical {
+    &__overlay {
+      width: 2%;
+    }
+  }
+}
+
+@media screen and (max-width: 1279px) { // sm
+  section {
+    padding: 64px 0;
+  }
+
+  .container {
+    max-width: 750px;
+  }
+
+  .owl-next, .owl-prev {
+    width: 56px;
+    height: 56px;
+    border-radius: 24px;
+
+    &::after, &::before {
+      border-radius: 24px;
+    }
+  }
+
+  .h900 {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  .h750 {
+    font-size: 32px;
+    line-height: 36px;
+  }
+
+  .h700 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .h300 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .h250 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .p400 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .p300 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .p100 {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .header {
+
+    &__logo {
+      width: 98px;
+    }
+
+    &__nav-item {
+      width: 48px;
+      height: 32px;
+    }
+  }
+
+  .footer {
+
+    &__logo {
+      width: 98px;
+    }
+  }
+
+  .contact {
+
+    &__social-item {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      align-items: flex-start;
+      row-gap: 16px;
+    }
+
+    &__social-icon {
+      width: 44px;
+      height: 44px;
+    }
+
+    &__social-arrow {
+      position: absolute;
+      top: 26px;
+      right: 23px;
+    }
+
+    &__form-content {
+      flex-direction: column;
+    }
+
+    &__form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__text-description {
+      margin-bottom: 32px;
+    }
+
+    &__form-content {
+      padding: 24px;
+    }
+
+    &__form-wrapper {
+      padding-top: 236px;
+    }
+
+    &__form-bg {
+      top: -205px;
+      height: 563px;
+    }
+  }
+
+  .vertical {
+    &__slider-item {
+      height: 408px;
+    }
+
+    &__overlay {
+      width: 5%;
+    }
+  }
+
+  .gallery {
+
+    &__item-list {
+      grid-template-areas:
+        "l l l l l l"
+        "l l l l l l"
+        "l l l l l l"
+        "m1 m1 m1 m2 m2 m2"
+        "m1 m1 m1 m2 m2 m2"
+        "s1 s1 s2 s2 s3 s3";
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+  }
+  
+}
+
+@media screen and (max-width: 767px) { // bs
   section {
     padding: 48px 0;
   }
@@ -1357,10 +1521,7 @@ section {
     margin-top: 48px;
   }
 
-  .owl-prev, .owl-next {
-    width: 56px;
-    height: 56px;
-  }
+  
 
   .button {
     text-align: center;
@@ -1428,6 +1589,17 @@ section {
       row-gap: 16px;
     }
 
+    &__social-item {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &__social-arrow {
+      position: relative;
+      top: 0;
+      right: 0;
+    }
+
     &__form-content {
       flex-direction: column;
     }
@@ -1462,7 +1634,7 @@ section {
     }
 
     &__content {
-      padding: 56px 0;
+      padding: 56px 0 56px 0;
     }
 
     &__top {
@@ -1489,6 +1661,25 @@ section {
       display: flex;
       justify-content: center;
       margin-top: 32px;
+    }
+
+    &__top-wrap {
+      display: grid;
+      grid-template-areas: 
+        'l p'
+        'n n';
+    }
+
+    &__nav {
+      grid-area: n;
+    }
+
+    &__phone {
+      grid-area: p;
+    }
+
+    &__logo {
+      grid-area: l;
     }
   }
 }
